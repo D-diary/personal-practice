@@ -1,11 +1,11 @@
+// https://programmers.co.kr/learn/courses/30/lessons/12935
 
 // 코드 실행 통과 채점 X
 arr1 = [7,8,6,10,11,19,20,21,4,3,2,1]
 arr2 = [10]
-let desc
-let m = [-1]
 function solution(arr) {
-  desc = arr.sort(function(a,b){return b - a})
+  const desc = arr.sort(function(a,b){return b - a})
+  const m = [-1]
   if (desc.length > 2) {
     desc.pop()
     return desc   

@@ -1,11 +1,9 @@
+// https://programmers.co.kr/learn/courses/30/lessons/12947
 
 // 코드 실행 통과 제출 실패
-var number = 17
-var str
-var arr = []
 function solution(x) {
     var answer = true;
-    str = (x).toString().split('')
+    const str = (x).toString().split('')
     console.log(x)
     num = Number(str[0]) + Number(str[1])
     console.log(num)
@@ -16,4 +14,5 @@ function solution(x) {
     }
 }
 
-console.log(solution(number))
+console.log(solution(18))
+console.log(solution(17))

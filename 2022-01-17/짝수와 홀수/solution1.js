@@ -1,5 +1,4 @@
-var num = 3
-var num2 = 4
+// https://programmers.co.kr/learn/courses/30/lessons/12937
 
 function solution(num) {
   if (num %2 === 0)  {
@@ -10,4 +9,5 @@ function solution(num) {
   return
 }
 
-console.log(solution(num2))
+console.log(solution(3))
+console.log(solution(4))
