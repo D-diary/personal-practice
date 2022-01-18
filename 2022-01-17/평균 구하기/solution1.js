@@ -1,11 +1,10 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12944
 
-arr1 = [1,2,3,4]
-var add = 0
 
 function solution(arr) {
-    var len = arr.length
-    var answer = 0;
+    let add = 0
+    let len = arr.length
+    let answer = 0;
     for (var i = 0; i < arr.length; i++) {
       add += add + arr[i]
     }
@@ -14,4 +13,4 @@ function solution(arr) {
     return answer;
 }
 
-solution(arr1)
+solution([1,2,3,4])
