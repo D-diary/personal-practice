@@ -38,3 +38,25 @@ function solution(n) {
 }
 
 console.log(solution(n))
+
+// NaN 뜨는 이유
+// n = 12345
+// console.log('n :',typeof n)
+// var str
+// var arr
+// var reverseArr
+
+// function solution(n) {
+//   str = n.toString()
+//   console.log(str)
+//   arr = [...str]
+//   console.log(arr)
+//   re = arr.reverse()
+//   console.log(re)
+//   result = Number(re)
+//   console.log(result)
+//   // var answer = Number(arr.reverse())
+//   // return answer  
+// }
+
+// console.log(solution(n))
