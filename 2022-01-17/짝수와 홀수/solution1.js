@@ -6,7 +6,6 @@ function solution(num) {
   } else if (num %2 !== 0) {
       return "Odd";
   }
-  return
 }
 
 console.log(solution(3));
