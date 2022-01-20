@@ -2,12 +2,12 @@
 
 function solution(num) {
   if (num %2 === 0)  {
-      return "Even"
+      return "Even";
   } else if (num %2 !== 0) {
-      return "Odd"
+      return "Odd";
   }
   return
 }
 
-console.log(solution(3))
-console.log(solution(4))
+console.log(solution(3));
+console.log(solution(4));

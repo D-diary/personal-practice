@@ -2,9 +2,15 @@
 
 
 function solution(phone_number) {
-  var answer = '';
-  return answer;
+  let p = phone_number
+  let answer = '';
+  console.log(p[p.length-1])
+  for (let i = 0; i < p.length; i++) {
+    if (p[i] != p[p.length-1]) {
+      iter = p[i].replace('${p[i]}','*')
+      console.log(iter)
+    }
+  }
+  return ;
 }
-
-console.log(solution("01033334444")) // "*******4444"
-console.log(solution("027778888")) // "*****8888"
+console.log(solution("01033334444"))

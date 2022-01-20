@@ -2,14 +2,14 @@
 
 
 function solution(arr) {
-    let add = 0
-    let len = arr.length
+    let add = 0;
+    let len = arr.length;
     let answer = 0;
     for (let i = 0; i < arr.length; i++) {
-      add += arr[i]
-      console.log(add)
+      add += arr[i];
+      console.log(add);
     }
-    answer = add / len
+    answer = add / len;
     
     return answer;
 }
