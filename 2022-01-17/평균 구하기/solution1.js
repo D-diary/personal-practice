@@ -5,8 +5,9 @@ function solution(arr) {
     let add = 0
     let len = arr.length
     let answer = 0;
-    for (var i = 0; i < arr.length; i++) {
-      add += add + arr[i]
+    for (let i = 0; i < arr.length; i++) {
+      add += arr[i]
+      console.log(add)
     }
     answer = add / len
     
