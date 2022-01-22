@@ -4,7 +4,6 @@
 function solution(arg) {
   let temp = 10;
   let arr = [];
-  let newArr = [];
   if (arg.length > 2) {
     for (let i = 0; i < arg.length; i++) {
     arr.push(arg[i])
