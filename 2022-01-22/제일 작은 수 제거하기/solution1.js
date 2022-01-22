@@ -1,8 +1,7 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12935
 
-// 코드 실행 통과 채점 X
-
-function solution(arg) {
+// 3점 제출실패
+function solution(arg){
   let temp = 10;
   let arr = [];
   let newArr = [];
@@ -12,20 +11,21 @@ function solution(arg) {
     if (temp > arg[i]) {
       temp = arg[i]
     }
-    }
-    arr = String(arr)
-    // temp = String(temp)
-    arr = arr.replace(temp,'');
-    for (let i = 0; i < arr.length; i++) {
-      arr = arr.replace(',','')
-      
-    }
-    // arr.pop()
-    for (let i = 0; i < arr.length; i++) {
-      newArr[i] = Number(arr[i])
-    }
-    console.log(newArr)
-    return arr
+  }
+  arr = String(arr)
+  // temp = String(temp)
+  arr = arr.replace(temp,'');
+  for (let i = 0; i < arr.length; i++) {
+    arr = arr.replace(',','')
+    
+  }
+  // arr.pop()
+  for (let i = 0; i < arr.length; i++) {
+    newArr[i] = Number(arr[i])
+  }
+  console.log('newarr',newArr)
+  console.log('arr',arr)
+  return newArr
   }
   
   
@@ -34,7 +34,5 @@ function solution(arg) {
   }
 }
 
-console.log(solution([4,3,2,1]))
-console.log(solution([10]))
-
-
+console.log(solution([4,3,2,1])); // [4, 3, 2]
+console.log(solution([10])); // [-1]
