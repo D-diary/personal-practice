@@ -3,7 +3,7 @@
 function solution(s) {
 
   for(let i = 0; s.length; i++) {
-    if ( ?? % ===0 ) {
+    if ( i % 2 ===0 ) {
       s.toUpperCase()
     } else {
       s.toLowerCase()
