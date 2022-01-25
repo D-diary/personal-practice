@@ -6,18 +6,21 @@ function solution(s) {
   for (let i = 0; i < s.length; i++) {
     
     if(s[i]===" ") {
-      idx = 0;
+      idx = -1;
     }
     
     if (idx%2===0) {
-      s[i].toUpperCase()
+      result += s[i].toUpperCase()
       console.log('up',s[i],idx,i)
     } else {
-      s[i].toLowerCase()
+      result += s[i].toLowerCase()
       console.log('lo',s[i],idx,i)
     }
     idx ++;
-  }  
+  }
+  return result
 }
 
 console.log(solution("try hello world"))
+
+// 9번줄 idx = -1; 말고 다른 방법으로 초기화 할 수 있는지
