@@ -1,0 +1,10 @@
+// https://programmers.co.kr/learn/courses/30/lessons/12931
+
+function solution(n) {
+  return Array.from(String(n))
+      .map(x => Number(x))
+      // .map(Number)
+      .reduce((a, b) => a + b);
+}
+
+console.log(solution(123));
