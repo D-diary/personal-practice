@@ -5,7 +5,7 @@
 function solution(n) {
   let x = 0;
   
-  while ( x*x < n ) {
+  while (x * x < n) {
     x++;
     console.log('x', x)
   }
@@ -18,4 +18,4 @@ function solution(n) {
 }
 
 console.log('soltuion',solution(121)) // 144
-console.log('soltuion',solution(3)) // -1
+// console.log('soltuion',solution(3)) // -1

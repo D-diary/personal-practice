@@ -1,7 +1,7 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12950
 
 function solution(arr1, arr2) {
-  let result = [];
+  result = [];
   for( let i = 0; i < arr1.length; i++) {
     for( let j = 0; j < arr1[i].length; j++) {
       console.log(arr1[i][j])

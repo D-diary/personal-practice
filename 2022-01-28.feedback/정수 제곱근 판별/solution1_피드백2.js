@@ -3,18 +3,14 @@
 // 
 
 function solution(n) {
-  let x = 0;
-  
-  while ( x*x < n ) {
-    x++;
-    console.log('x', x)
+  for (let i = 0; i * i <= n; i++) {
+    // console.log('i', i);
+    if( n === i * i ) {
+      return ( i + 1 ) * ( i + 1 );
+    }
   }
 
-  if( n === x * x ) {
-    return ( x + 1 ) * ( x + 1 );
-  } else {
-    return -1
-  }
+  return -1;
 }
 
 console.log('soltuion',solution(121)) // 144
