@@ -4,17 +4,16 @@ function solution(x, y) {
   let star = [];
   
   for (let i = 0; i < y; i++) {
-    console.log('i',i);
-
     for (let j = 0; j < x; j++) {
       console.log('*');
       star.push('*');
-      console.log('j',j);
     }
+    result = `${star}\n`
   }
 
-  result = star.join('')
-  console.log(result)
+  // result = star.join('')
+  console.log('re',result)
+  console.log(star)
 }
 
 console.log(solution(5, 3));

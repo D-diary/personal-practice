@@ -6,7 +6,7 @@ function solution(s) {
 
     for (let i = 0; i < s.length; i++) {
         if (s[i] === ' ') {
-            // console.log('word>', word);
+            console.log('word>', word);
             arr.push(word);
             word = '';
             continue;
@@ -15,6 +15,8 @@ function solution(s) {
         // console.log(s[i]);
         word += s[i];
     }
+    console.log('word',word)
+    console.log('arr',arr)
 
 
     // console.log('word>', word);
