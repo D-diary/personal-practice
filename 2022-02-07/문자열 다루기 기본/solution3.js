@@ -4,8 +4,20 @@ function solution(s) {
   let answer = true;
 
   for ( let i = 0; i < s.length; i++) {
-    if ( isNaN(s[i]) ) {
-      answer = false;
+    if ( s.length === 4 ) {
+      if ( isNaN(s[i]) ) {
+        answer = false;
+      } else {
+        answer = true;
+      }
+    }
+    
+    if ( s.length === 6 ) {
+      if ( isNaN(s[i]) ) {
+        answer = false;
+      } else {
+        answer = true;
+      }
     }
   }
 

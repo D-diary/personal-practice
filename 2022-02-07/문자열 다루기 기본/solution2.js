@@ -5,12 +5,14 @@ function solution(s) {
 
   for ( let i = 0; i < s.length; i++) {
     if ( !parseInt(s[i]) ) {
-        answer = false;
+      answer = false;
     }
   }
 
   return answer;
 }
 
-// console.log(solution("a234")); // false
+console.log(solution("a234")); // false
 console.log(solution("1234")); // true
+
+// 코드 실행 통과 채점 75 실패 
