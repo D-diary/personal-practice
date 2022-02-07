@@ -11,7 +11,11 @@ function solution(arr, divisor) {
 
   for (let i = 0; i < answer.length; i++) {
     for (let j = i + 1; j < answer.length; j++) {
-
+      if ( answer[i] > answer[j] ) {
+        const temp = answer[i];
+        answer[i] = answer[j];
+        answer[j] = temp;
+      }
     }
   }
 
