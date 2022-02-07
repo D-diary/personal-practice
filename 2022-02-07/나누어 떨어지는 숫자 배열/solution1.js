@@ -14,7 +14,7 @@ function solution(arr, divisor) {
   })
   
   if (answer.length < 1) {
-    answer = [-1]
+    answer = [-1];
   }
   
   return answer;
