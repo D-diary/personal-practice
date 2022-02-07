@@ -5,15 +5,15 @@ function solution(x, y) {
   
   for (let i = 0; i < y; i++) {
     for (let j = 0; j < x; j++) {
-      console.log('*');
+      // console.log('*');
       star.push('*');
     }
     result = `${star}\n`
   }
 
-  // result = star.join('')
-  console.log('re',result)
-  console.log(star)
+  result = star.join('')
+  console.log('re',result);
+  console.log('star',star);
 }
 
 console.log(solution(5, 3));
