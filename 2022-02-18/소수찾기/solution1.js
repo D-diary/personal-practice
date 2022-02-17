@@ -1,5 +1,7 @@
 // https://programmers.co.kr/learn/courses/30/lessons/12921
 
+// 에라토스테네스의 체
+
 function solution(n) {
 	const arr = [];  
   
