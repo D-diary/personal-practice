@@ -5,19 +5,19 @@ function solution(s, n) {
   const lower = 'abcdefghijklmnopqrstuvwxyz';
   const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   
-  for ( let j = 0; j < s.length; j++) {
-    if ( s[j] === ' ' ) {
+  for ( let i = 0; i < s.length; i++) {
+    if ( s[i] === ' ' ) {
       answer += ' ';
     }
-    for ( let i = 0; i < lower.length; i++) {
-      if ( s[j] === lower[i] && i + n < lower.length ) {
-        answer += ( lower[ i + n ] );
-      } else if ( s[j] === upper[i] && i + n < upper.length ) {
-        answer += ( upper [ i + n ] );
-      } else if ( s[j] === lower[i] && i + n >= lower.length ) {
-        answer += ( lower[ i + n - lower.length ] );
-      } else if ( s[j] === upper[i] && i + n >= upper.length ) {
-        answer += ( upper[ i + n - lower.length ] );
+    for ( let j = 0; j < lower.length; j++) {
+      if ( s[i] === lower[j] && j + n < lower.length ) {
+        answer += ( lower[ j + n ] );
+      } else if ( s[i] === upper[j] && j + n < upper.length ) {
+        answer += ( upper [ j + n ] );
+      } else if ( s[i] === lower[j] && j + n >= lower.length ) {
+        answer += ( lower[ j + n - lower.length ] );
+      } else if ( s[i] === upper[j] && j + n >= upper.length ) {
+        answer += ( upper[ j + n - lower.length ] );
       }
     }
   }
