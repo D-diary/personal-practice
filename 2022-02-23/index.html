@@ -9,37 +9,82 @@
     </style>
 </head>
 <body>
-
-
+  <div>게임을 시작하지!</div>
+  
 <script>
 
 function random(){
-  return Math.floor( Math.random() * 10 )
+  let result = '';
+  let temp = 0;
+  
+  temp = Math.floor( Math.random() * 10 );
+
+  if ( temp < 3 ) {
+    result = '가위';
+  } else if ( temp < 6) {
+    result = '바위';
+  } else {
+    result = '보';
+  }
+
+  return result;
 }
 
 function com() {
-  if ( random < 3 ) {
-    return '가위'
-  } else if ( random < 6) {
-    return '바위'
-  } else if ( random < 9) {
-    return '보'
-  }
+  return random();
 }
 
 function user() {
-
+  return random();
 }
+
+function win() {
+  return '이겼다';
+}
+
+function lose() {
+  return '졌다';
+}
+
+function draw() {
+  return '무승부';
+}
+
 
 function gamestart() {
   console.log('가위 바위 보!');
   const u = user();
   const c = com();
 
+  let result = lose();
+
   console.log(u, c);
+
+  if ( u === c ) {
+    result = draw();
+  }
+  
+  if ( u === '가위' ) {
+    if ( c === '보' ) {
+      result = win();
+    }
+  }
+
+  if ( u === '바위' ) {
+    if ( c === '가위') {
+      result = win();
+    }
+  }
+
+  if ( u === '보' ) {
+    if( c === '바위' ) {
+      result = win();
+    }
+  }
+  return result;
 }
 
-gamestart();
+console.log(gamestart());
 
 
 
