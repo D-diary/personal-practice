@@ -5,12 +5,52 @@
     <title>Title</title>
     <link rel="stylesheet" href="">
     <style>
+      .wrap {
+        display: flex;
+      }
+      .title {
+        font-size: 100px;
+        font-weight: bold;
+        margin: auto;
+      }
+      .user {
+        
+      }
+      
+      .com {
+
+      }
+      
+      .btn {
+        display: block;
+        width: 400px;
+      }
 
     </style>
 </head>
 <body>
-  <div>게임을 시작하지!</div>
-  
+  <div class="wrap">
+    <div class="title">게임을 시작하지!</div>
+  </div>
+  <div class="wrap">
+    <div class="user">
+      <img src="./img/paper.png" alt="pager">
+    </div>
+    <div class="title">
+      VS
+    </div>
+    <div class="com">
+      <img src="./img/paper.png" alt="pager">
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="btn">
+      <button>가위</button>
+      <button>바위</button>
+      <button>보</button>
+      <button>다시하기</button>
+    </div>
+  </div>
 <script>
 
 function random(){
