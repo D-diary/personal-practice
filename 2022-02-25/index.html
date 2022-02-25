@@ -103,74 +103,6 @@
 </div>
 
 <script>
-
-    function random() {
-        let result = '';
-        let temp = 0;
-
-        temp = Math.floor(Math.random() * 10);
-
-        if (temp < 3) {
-            result = '가위';
-        } else if (temp < 6) {
-            result = '바위';
-        } else {
-            result = '보';
-        }
-
-        return result;
-    }
-
-    function com() {
-        return random();
-    }
-
-    function win() {
-        return '이겼다';
-    }
-
-    function lose() {
-        return '졌다';
-    }
-
-    function draw() {
-        return '무승부';
-    }
-
-
-    function gamestart() {
-        console.log('가위 바위 보!');
-        const u = user();
-        const c = com();
-
-        let result = lose();
-
-        console.log(u, c);
-
-        if (u === c) {
-            result = draw();
-        }
-
-        if (u === '가위') {
-            if (c === '보') {
-                result = win();
-            }
-        }
-
-        if (u === '바위') {
-            if (c === '가위') {
-                result = win();
-            }
-        }
-
-        if (u === '보') {
-            if (c === '바위') {
-                result = win();
-            }
-        }
-        return result;
-    }
-
     // console.log(gamestart());
 
 
@@ -191,6 +123,8 @@
     const rps1 = document.querySelector('.rps1');
     const rps2 = document.querySelector('.rps2');
     const rps3 = document.querySelector('.rps3');
+    let title = document.querySelector('.title')
+
 
     const rpsImages = ['./img/scissors.png', './img/rock.png', './img/paper.png'];
     let userCount = 0;
@@ -223,6 +157,7 @@
         userImage.src = './img/scissors.png';
         clearInterval(userIntervalId);
         clearInterval(comIntervalId);
+        gamestart()
     });
 
     // 바위
@@ -230,6 +165,7 @@
         userImage.src = './img/rock.png';
         clearInterval(userIntervalId);
         clearInterval(comIntervalId);
+        gamestart()
     });
 
     // 보
@@ -237,7 +173,74 @@
         userImage.src = './img/paper.png';
         clearInterval(userIntervalId);
         clearInterval(comIntervalId);
+        gamestart()
     });
+
+    function random() {
+        let temp = 0;
+
+        temp = Math.floor(Math.random() * 10);
+
+        if (temp < 3) {
+            comImage.src = './img/scissors.png';
+        } else if (temp < 6) {
+            comImage.src = './img/rock.png';
+        } else {
+            comImage.src = './img/paper.png';
+        }
+        console.log('temp', temp);
+
+        return comImage.src;
+    }
+
+    function com() {
+        return random();
+    }
+
+    function win() {
+        title.textContent = '이겼다';
+    }
+
+    function lose() {
+        title.textContent = '졌다';
+    }
+
+    function draw() {
+        title.textContent = '무승부';
+    }
+
+
+    function gamestart() {
+        let result = lose();
+        console.log(userImage.src)
+        console.log(comImage.src)
+
+        random();
+
+        if ( userImage.src === comImage.src ) {
+            result = draw();
+        }
+
+        if ( userImage.src.includes('scissors') ) {
+            if ( comImage.src.includes('paper') ) {
+                result = win();
+            }
+        }
+
+        if ( userImage.src.includes('rock') ) {
+            if ( comImage.src.includes('scissors') ) {
+                result = win();
+            }
+        }
+
+        if ( userImage.src.includes('paper') ) {
+            if ( comImage.src.includes('rock') ) {
+                result = win();
+            }
+        }
+        return result;
+    }
+
 
 
 </script>
