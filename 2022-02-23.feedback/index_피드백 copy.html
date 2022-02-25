@@ -177,20 +177,20 @@
     });
 
     function random() {
+        let result = '';
         let temp = 0;
 
         temp = Math.floor(Math.random() * 10);
 
         if (temp < 3) {
-            comImage.src = './img/scissors.png';
+            result = '가위';
         } else if (temp < 6) {
-            comImage.src = './img/rock.png';
+            result = '바위';
         } else {
-            comImage.src = './img/paper.png';
+            result = '보';
         }
-        console.log('temp', temp);
 
-        return comImage.src;
+        return result;
     }
 
     function com() {
@@ -214,27 +214,24 @@
         let result = lose();
         console.log(userImage.src)
         console.log(comImage.src)
-
-        random();
-
         if ( userImage.src === comImage.src ) {
             result = draw();
         }
 
-        if ( userImage.src.includes('scissors') ) {
-            if ( comImage.src.includes('paper') ) {
+        if ( userImage.src === './img/scissors.png' ) {
+            if ( comImage.src === './img/paper.png' ) {
                 result = win();
             }
         }
 
-        if ( userImage.src.includes('rock') ) {
-            if ( comImage.src.includes('scissors') ) {
+        if ( userImage.src === '/img/rock.png' ) {
+            if ( comImage.src === './img/scissors.png' ) {
                 result = win();
             }
         }
 
-        if ( userImage.src.includes('paper') ) {
-            if ( comImage.src.includes('rock') ) {
+        if ( userImage.src === './img/paper.png' ) {
+            if ( comImage.src === '/img/rock.png' ) {
                 result = win();
             }
         }
