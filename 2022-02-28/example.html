@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <title>Document</title>
+  <style>
+    
+    body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 600px;
+            height: 600px;
+            display: grid;
+            grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+        }
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 6px solid #a8a8a8;
+            font-weight: bold;
+            font-size: 10rem;
+        }
+        .cell-01,
+        .cell-02,
+        .cell-03 {
+            border-top: none;
+        }
+        .cell-01,
+        .cell-04,
+        .cell-07 {
+            border-left: none;
+        }
+        .cell-03,
+        .cell-06,
+        .cell-09 {
+            border-right: none;
+        }
+        .cell-07,
+        .cell-08,
+        .cell-09 {
+            border-bottom: none;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal_overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+        }
+        .modal_content {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 50px 100px;
+            text-align: center;
+            position: relative;
+            border-radius: 10px;
+            width: 20vw;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+            font-size: 5rem;
+        }
+        .hidden {
+            display: none;
+        }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cell cell-01"></div>
+    <div class="cell cell-02"></div>
+    <div class="cell cell-03"></div>
+    <div class="cell cell-04"></div>
+    <div class="cell cell-05"></div>
+    <div class="cell cell-06"></div>
+    <div class="cell cell-07"></div>
+    <div class="cell cell-08"></div>
+    <div class="cell cell-09"></div>
+  </div>
+  <div class="modal hidden">
+    <div class="modal_overlay"></div>
+    <div class="modal_content">
+      <h1>gameOver</h1>
+      <button class="modal_replay">다시하기</button>
+    </div>
+  </div>
+
+  <script>
+
+  (function () {
+    const marker = {
+      x: { marker: 'X', color: 'red' },
+      o: { marker: 'O', color: 'blue' },
+      current: { marker: 'X', color: 'red' },
+      toggle() {
+        this.current = (this.current === this.o) ? this.x : this.o;
+      },
+      reset() {
+        this.current = this.x;
+      },
+    }
+
+    const isSequenceValue = (value) => ['XXX', 'OOO'].some(v => v === value);
+
+    const doSumValues = (arr) => arr.reduce((acc, className) => acc + document.querySelector(className).textContent, '');
+
+    const isTieGame = () => {
+      const cells = ['.cell-01', '.cell-02', '.cell-03',
+        '.cell-04', '.cell-05', '.cell-06',
+        '.cell-07', '.cell-08', '.cell-09',];
+      return cells.every(cell => ['X', 'O'].some(v => v === document.querySelector(cell).textContent));
+    };
+
+    function isDone() {
+      const checkCase = [
+        ['.cell-01', '.cell-02', '.cell-03'],
+        ['.cell-04', '.cell-05', '.cell-06'],
+        ['.cell-07', '.cell-08', '.cell-09'],
+        ['.cell-01', '.cell-04', '.cell-07'],
+        ['.cell-02', '.cell-05', '.cell-08'],
+        ['.cell-03', '.cell-06', '.cell-09'],
+        ['.cell-01', '.cell-05', '.cell-09'],
+        ['.cell-03', '.cell-05', '.cell-07'],
+      ];
+
+
+      return checkCase.some(subArr => isSequenceValue(doSumValues(subArr)));
+    }
+
+    const container = document.querySelector('.container');
+    container.addEventListener('click', function (e) {
+      const cell = e.target;
+      if (cell.textContent === 'X' || cell.textContent === 'O') {
+        return;
+      }
+
+      marker.toggle();
+      cell.textContent = marker.current.marker;
+      cell.style = 'color: ' + marker.current.color;
+
+      if (isTieGame() || isDone()) {
+        const modal = document.querySelector('.modal');
+        modal.classList.remove('hidden');
+      }
+    });
+
+    const modalReplay = document.querySelector('.modal_replay');
+    modalReplay.addEventListener('click', function () {
+      const modal = document.querySelector('.modal');
+      modal.classList.add('hidden');
+
+      const cells = document.querySelectorAll('.cell');
+      Array.from(cells).map(cell => cell.textContent = '');
+
+      marker.reset();
+    })
+  })();
+
+
+
+
+  </script>
+</body>
+</html>

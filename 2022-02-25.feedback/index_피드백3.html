@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="">
+    <style>
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .wrap {
+            display: flex;
+        }
+
+        .title {
+            font-size: 100px;
+            font-weight: bold;
+        }
+
+        .vs {
+            font-size: 300px;
+            font-weight: bold;
+        }
+
+        .user {
+
+        }
+
+        .com {
+
+        }
+
+        .btn {
+        }
+
+        .container {
+            /*margin-top: 20px;*/
+            /*margin-bottom: 20px;*/
+        }
+
+        .rps-container {
+            width: 100vw;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button-container button {
+            width: 200px;
+            height: 100px;
+            font-size: 70px;
+            margin: 10px;
+        }
+
+        .button-container > button {
+            width: 400px;
+            height: 100px;
+            font-size: 70px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container wrap">
+    <div class="title">게임을 시작하지!</div>
+</div>
+
+<div class="container rps-container">
+    <div class="user">
+        <img src="./img/paper.png" alt="pager">
+    </div>
+
+    <div class="vs">
+        VS
+    </div>
+
+    <div class="com">
+        <img src="./img/paper.png" alt="pager">
+    </div>
+</div>
+
+<div class="container button-container">
+    <div class="btn">
+        <button class="rps-btn rps1">가위</button>
+        <button class="rps-btn rps2">바위</button>
+        <button class="rps-btn rps3">보</button>
+    </div>
+    <button>다시하기</button>
+</div>
+
+<script>
+    // console.log(gamestart());
+
+
+    // 랜덤
+    // 유저
+    // 컴퓨터
+    // 가위, 바위, 보
+    // 시작
+
+    // 시작
+    // 유저의 가위, 바위, 보를 선택할 수 있어야 한다.
+    // 컴퓨터의 가위, 바위, 보는 랜덤으로 선택된다.
+    // 컴퓨터는 가위를 선택한다.
+
+    // 승패 기준은 유저를 기준으로 한다.
+    // 유저가 이겼으면 '이겼다.'
+
+    const rps1 = document.querySelector('.rps1');
+    const rps2 = document.querySelector('.rps2');
+    const rps3 = document.querySelector('.rps3');
+    const btn = document.querySelector('.btn');
+    let title = document.querySelector('.title')
+
+
+    const rpsImages = ['./img/scissors.png', './img/rock.png', './img/paper.png'];
+    const userImage = document.querySelector('.user > img');
+    const comImage = document.querySelector('.com > img');
+
+    let userCount = 0;
+    const userIntervalId = setInterval(function () {
+        userImage.src = rpsImages[userCount % 3];
+        userCount += 1;
+    }, 100);
+
+    let comCount = 0;
+    const comIntervalId = setInterval(function () {
+        comImage.src = rpsImages[comCount % 3];
+        comCount += 1;
+    }, 100);
+
+    btn.addEventListener('click', function (event) {
+        if (!event.target.classList.contains('rps-btn')) {
+            return;
+        }
+
+        if (event.target.textContent === '가위') {
+            userImage.src = './img/scissors.png';
+        }
+
+        if (event.target.textContent === '바위') {
+            userImage.src = './img/rock.png';
+        }
+
+        if (event.target.textContent === '보') {
+            userImage.src = './img/paper.png';
+        }
+
+        gameOver();
+    });
+
+
+
+    function random(end) {
+        return Math.floor(Math.random() * end); // 0, 1, 2
+    }
+
+    const WIN = '이겼다';
+    const LOSE = '졌다';
+    const DRAW = '무승부';
+    function displayResult(result) {
+        title.textContent = result;
+    }
+
+    function gameOver() {
+        clearInterval(userIntervalId);
+        clearInterval(comIntervalId);
+
+        displayResult(LOSE);
+        // console.log(userImage.src)
+        // console.log(comImage.src)
+
+        comImage.src = rpsImages[random(3)];
+
+        if ( userImage.src === comImage.src ) {
+            displayResult(DRAW);
+        }
+
+        if ( userImage.src.includes('scissors') ) {
+            if ( comImage.src.includes('paper') ) {
+                displayResult(WIN);
+            }
+        }
+
+        if ( userImage.src.includes('rock') ) {
+            if ( comImage.src.includes('scissors') ) {
+                displayResult(WIN);
+            }
+        }
+
+        if ( userImage.src.includes('paper') ) {
+            if ( comImage.src.includes('rock') ) {
+                displayResult(WIN);
+            }
+        }
+    }
+
+
+
+</script>
+</body>
+</html>
