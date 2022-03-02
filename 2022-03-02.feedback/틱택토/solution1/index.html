@@ -104,21 +104,21 @@
 
       // 게임 결과 체크
       console.log(box2el.textContent)
-      if ( box1el.textContent === 'O' && box1el.textContent === box2el.textContent && box2el.textContent === box3el.textContent ) {
+      if ( box1el.textContent === '0' && box1el.textContent === box2el.textContent && box2el.textContent === box3el.textContent ) {
         alert(ox,'승');
-      } else if ( box4el.textContent === 'O' && box4el.textContent === box5el.textContent && box5el.textContent === box6el.textContent ) {
+      } else if ( box4el.textContent === '0' && box4el.textContent === box5el.textContent && box5el.textContent === box6el.textContent ) {
         alert(ox)
-      } else if ( box7el.textContent === 'O' && box7el.textContent === box8el.textContent && box8el.textContent === box9el.textContent ) {
+      } else if ( box7el.textContent === '0' && box7el.textContent === box8el.textContent && box8el.textContent === box9el.textContent ) {
         alert(ox)
-      } else if ( box1el.textContent === 'O' && box1el.textContent === box4el.textContent && box4el.textContent === box7el.textContent ) {
+      } else if ( box1el.textContent === '0' && box1el.textContent === box4el.textContent && box4el.textContent === box7el.textContent ) {
         alert(ox)
-      } else if ( box2el.textContent === 'O' && box2el.textContent === box5el.textContent && box5el.textContent === box8el.textContent ) {
+      } else if ( box2el.textContent === '0' && box2el.textContent === box5el.textContent && box5el.textContent === box8el.textContent ) {
         alert(ox)
-      } else if ( box3el.textContent === 'O' && box3el.textContent === box6el.textContent && box6el.textContent === box9el.textContent ) {
+      } else if ( box3el.textContent === '0' && box3el.textContent === box6el.textContent && box6el.textContent === box9el.textContent ) {
         alert(ox)
-      } else if ( box1el.textContent === 'O' && box1el.textContent === box5el.textContent && box5el.textContent === box9el.textContent ) {
+      } else if ( box1el.textContent === '0' && box1el.textContent === box5el.textContent && box5el.textContent === box9el.textContent ) {
         alert(ox)
-      } else if ( box3el.textContent === 'O' && box3el.textContent === box5el.textContent && box5el.textContent === box7el.textContent ) {
+      } else if ( box3el.textContent === '0' && box3el.textContent === box5el.textContent && box5el.textContent === box7el.textContent ) {
         alert(ox)
       } 
       ox = (ox === 'O') ? 'X' : 'O';
@@ -137,8 +137,6 @@
 
     });
   }
-
-  temp.join('') === '000' ? console.log('O win') : 
 
 </script>
 </body>

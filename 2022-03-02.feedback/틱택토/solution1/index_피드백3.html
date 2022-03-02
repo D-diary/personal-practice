@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <style>
+    .wrap {
+      width: 100vh;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+
+    .box-wrap {
+      width: 600px;
+      height: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      border: 2px solid black;
+      box-sizing: border-box;
+
+      font-size: 200px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .O {
+      color : blue;
+    }
+    .X {
+      color : red;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="box-wrap">
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+    <div class="box box5"></div>
+    <div class="box box6"></div>
+    <div class="box box7"></div>
+    <div class="box box8"></div>
+    <div class="box box9"></div>
+  </div>
+
+</div>
+
+<script>
+  const boxClick = document.querySelectorAll('.box')
+
+  const condition = [
+    [ 'box1', 'box2', 'box3' ],
+    [ 'box4', 'box5', 'box6' ],
+    [ 'box7', 'box8', 'box9' ],
+    [ 'box1', 'box4', 'box7' ],
+    [ 'box2', 'box5', 'box8' ],
+    [ 'box3', 'box6', 'box9' ],
+    [ 'box1', 'box5', 'box9' ],
+    [ 'box3', 'box5', 'box7' ],
+  ]
+
+  function whoWin(target, s) {
+    return target === s;
+  }
+
+  function gameOver() {
+    for (let i = 0; i < condition.length; i++) {
+      const temp = [];
+
+      for (let j = 0; j < condition[i].length; j++) {
+        const element = condition[i][j];
+        temp.push(document.querySelector(`.${element}`).textContent);
+      }
+
+      // temp.join('') === 'OOO'
+      //         ? console.log('O win')
+      //         : temp.join('') === 'XXX'
+      //                 ? console.log('X win')
+      //                 : null;
+
+      // if (temp.join('') === 'OOO') {
+      //   console.log('O win');
+      //   return true;
+      // }
+
+      // if (temp.join('') === 'XXX') {
+      //   console.log('X win');
+      //   return true;
+      // }
+
+      // if (whoWin(temp.join(''), 'OOO')) {
+      //   console.log('O win');
+      //   return true;
+      // }
+
+      // if (whoWin(temp.join(''), 'XXX')) {
+      //   console.log('X win');
+      //   return true;
+      // }
+
+      // if (['OOO', 'XXX'].some(function (a) {
+      //   return a === temp.join('');
+      // })) {
+      //   return true;
+      // }
+
+      if (['OOO', 'XXX'].some((a) => a === temp.join(''))) {
+        return true;
+      }
+
+      // return ['OOO', 'XXX'].some((a) => a === temp.join(''));
+    }
+
+    return false;
+  }
+
+  let ox = 'O';
+  for (let b of boxClick) {
+    b.addEventListener('click', function (e) {
+      if (b.textContent !== '') {
+        return;
+      }
+
+      b.textContent = ox;
+      b.classList.add(ox);
+      ox = (ox === 'O') ? 'X' : 'O';
+
+      // 게임 결과 체크
+      if (gameOver()) {
+        console.log('Game Over');
+      }
+    });
+  }
+
+</script>
+</body>
+</html>
