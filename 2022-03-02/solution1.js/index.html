@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <style>
+    .wrap {
+      width: 100vh;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+
+    .box-wrap {
+      width: 600px;
+      height: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      border: 2px solid black;
+      box-sizing: border-box;
+
+      font-size: 200px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .O {
+      color : blue;
+    }
+    .X {
+      color : red;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="box-wrap">
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+    <div class="box box5"></div>
+    <div class="box box6"></div>
+    <div class="box box7"></div>
+    <div class="box box8"></div>
+    <div class="box box9"></div>
+  </div>
+
+</div>
+
+<script>
+  const box1el = document.querySelector('.box1')
+  const box2el = document.querySelector('.box2')
+  const box3el = document.querySelector('.box3')
+  const box4el = document.querySelector('.box4')
+  const box5el = document.querySelector('.box5')
+  const box6el = document.querySelector('.box6')
+  const box7el = document.querySelector('.box7')
+  const box8el = document.querySelector('.box8')
+  const box9el = document.querySelector('.box9')
+
+  const boxClick = document.querySelectorAll('.box')
+
+  const condition = [
+    [ 'box1', 'box2', 'box3' ],
+    [ 'box4', 'box5', 'box6' ],
+    [ 'box7', 'box8', 'box9' ],
+    [ 'box1', 'box4', 'box7' ],
+    [ 'box2', 'box5', 'box8' ],
+    [ 'box3', 'box6', 'box9' ],
+    [ 'box1', 'box5', 'box9' ],
+    [ 'box3', 'box5', 'box7' ],
+  ]
+  
+
+
+  let ox = 'O';
+  for (let b of boxClick) {
+    b.addEventListener('click', function (e) {
+      if (b.textContent !== '') {
+        return;
+      }
+
+      b.textContent = ox;
+      if ( ox === 'O' ) {
+        b.classList.add('O')
+      } else {
+        b.classList.add('X')
+      }
+      
+
+      // 게임 결과 체크
+      console.log(box2el.textContent)
+      if ( box1el.textContent === 'O' && box1el.textContent === box2el.textContent && box2el.textContent === box3el.textContent ) {
+        alert(ox,'승');
+      } else if ( box4el.textContent === 'O' && box4el.textContent === box5el.textContent && box5el.textContent === box6el.textContent ) {
+        alert(ox)
+      } else if ( box7el.textContent === 'O' && box7el.textContent === box8el.textContent && box8el.textContent === box9el.textContent ) {
+        alert(ox)
+      } else if ( box1el.textContent === 'O' && box1el.textContent === box4el.textContent && box4el.textContent === box7el.textContent ) {
+        alert(ox)
+      } else if ( box2el.textContent === 'O' && box2el.textContent === box5el.textContent && box5el.textContent === box8el.textContent ) {
+        alert(ox)
+      } else if ( box3el.textContent === 'O' && box3el.textContent === box6el.textContent && box6el.textContent === box9el.textContent ) {
+        alert(ox)
+      } else if ( box1el.textContent === 'O' && box1el.textContent === box5el.textContent && box5el.textContent === box9el.textContent ) {
+        alert(ox)
+      } else if ( box3el.textContent === 'O' && box3el.textContent === box5el.textContent && box5el.textContent === box7el.textContent ) {
+        alert(ox)
+      } 
+      ox = (ox === 'O') ? 'X' : 'O';
+
+      // condition.forEach(function(element) {
+      //   if ( document.querySelector('.${element}').textContent === 'O' ) {
+
+      //   }
+      // })
+
+      // if ( boxclick.textContent === 'O' ) {
+      //   boxclick.style.color = "blue";
+      // } else {
+      //   boxclick.style.color = "red";
+      // }
+
+    });
+  }
+
+</script>
+</body>
+</html>
