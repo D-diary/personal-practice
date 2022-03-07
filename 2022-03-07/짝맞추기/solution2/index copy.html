@@ -74,28 +74,29 @@
 
   const btnStart = document.querySelector('.btn-start');
   const btnReset = document.querySelector('.btn-reset');
-
-  const alpha = "AABBCCDDEEFF";
   
   function random(end) {
     return Math.floor(Math.random() * end); 
   }
 
-  function randomAlpha(alpha) {
-    let alpha2 = alpha
+  function randomAlpha() {
+    let alpha = "AABBCCDDEEFF";
+    const arr = alpha.split(' ');
+    console.log(arr);
+
     let answer = '';
-    answer = alpha2[random(12)];
+    answer = alpha[random(12)];
     console.log(answer);
     return answer;
   }
 
   btnStart.addEventListener('click', function() {
-    randomAlpha(alpha);
+    randomAlpha();
 
     for ( let i = 0; i < boxAll.length; i++ ) {
       const cell = boxAll[i];
-      cell.textContent = randomAlpha(alpha);
-      console.log(randomAlpha(alpha))
+      cell.textContent = randomAlpha();
+      console.log(randomAlpha());
     }
   });
 
