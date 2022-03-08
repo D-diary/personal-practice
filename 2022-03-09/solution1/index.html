@@ -100,6 +100,7 @@
 
     
     let clicked = [];
+    let answer = [];
     boxWrap.addEventListener('click', function (event) {
         // 박스가 아니면 리턴
         if (!event.target.classList.contains('box')) {
@@ -122,6 +123,13 @@
 
         clicked.push(box);
         console.log(clicked);
+        
+        // 2개 맞추면 멈추기
+        if ( clicked[0].textContent === clicked[1].textContent ) {
+          answer.push(clicked[0]);
+          answer.push(clicked[1]);
+        }
+        console.log(answer);
     });
 
     btnStart.addEventListener('click', function () {

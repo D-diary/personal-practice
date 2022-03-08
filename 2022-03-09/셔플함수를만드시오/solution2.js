@@ -7,7 +7,7 @@ function random(end) {
 function solution(arr) {
   const r = random(arr.length);
   let result = [];
-  for ( let i = arr.length - 1; i >= 0; i-- ) {
+  for ( let i = arr.length -1; i >= 0; i-- ) {
     result.push(arr.splice(r, 1)[0]);
     // result.push(arr[random(arr.length)]);
     console.log(i);
