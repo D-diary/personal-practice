@@ -108,6 +108,9 @@
         }
 
         if (clicked.length === 2) {
+            if (clicked[0].textContent === clicked[1].textContent) {
+              return;
+            }
             const span1 = clicked[0].querySelector('span');
             const span2 = clicked[1].querySelector('span');
             span1.classList.add('hidden');
@@ -126,10 +129,12 @@
         
         // 2개 맞추면 멈추기
         if ( clicked[0].textContent === clicked[1].textContent ) {
-          answer.push(clicked[0]);
-          answer.push(clicked[1]);
+          const span1 = clicked[0].querySelector('span');
+          const span2 = clicked[1].querySelector('span');
+          span1.classList.remove('hidden');
+          span2.classList.remove('hidden');
+          console.log('yes');
         }
-        console.log(answer);
     });
 
     btnStart.addEventListener('click', function () {
