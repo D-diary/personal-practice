@@ -154,10 +154,6 @@
             const cell = boxAll[i];
             // const c = randomAlpha();
             const c = arr[i];
-            // const span2 = cell.querySelector('span');
-            // if ( span2.classList.contains('hidden') ) {
-            //   console.log('span2hidden');
-            // }
 
             const span = document.createElement('span');
             span.classList.add('hidden');
@@ -177,9 +173,8 @@
             cell.classList.remove('correct');
             cell.removeChild(span);
           }
-          console.log('reset');
+          console.log('reset')
           count = 0;
-          clicked = [];
     });
 
 

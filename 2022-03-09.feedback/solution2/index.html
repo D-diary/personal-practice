@@ -91,6 +91,15 @@
     function random(end) {
         return Math.floor(Math.random() * end);
     }
+    function correctAll(){
+      let count = 0;
+      for ( let i = 0; i < boxAll.length; i++ ) {
+          if ( boxAll[i].classList.contains('correct') ) {
+            count++;
+          } 
+        }
+
+    }
 
     const arr = "ABCDEFABCDEF".split('');
 
@@ -103,7 +112,6 @@
     }
 
     let clicked = [];
-    let count = 0;
     boxWrap.addEventListener('click', function (event) {
         // 박스가 아니면 리턴
         if (!event.target.classList.contains('box')) {
@@ -141,9 +149,10 @@
             console.log(clicked);
         }
 
-        if ( boxAll.classList.contains('correct') ) {
-          console.log('gameover');
+        if (correctAll) {
+          console.log('gameover')
         }
+
 
     });
 
