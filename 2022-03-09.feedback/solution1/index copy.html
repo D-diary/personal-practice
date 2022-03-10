@@ -169,12 +169,18 @@
             // const c = randomAlpha();
             const c = arr[i];
 
-            const span = cell.querySelector('span');
-            cell.classList.remove('correct');
+            const span = document.createElement('span');
+
+            span.textContent = '';
+            span.classList.remove('hidden');
             cell.removeChild(span);
+
+            span.classList.add('hidden');
+            span.textContent = c;
+            cell.appendChild(span);
+            console.log(c);
           }
           console.log('reset')
-          count = 0;
     });
 
 

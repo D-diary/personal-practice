@@ -128,8 +128,6 @@
                 clicked[0].classList.add('correct');
                 clicked[1].classList.add('correct');
                 console.log('yes');
-                count++;
-                console.log(count);
                 clicked = [];
             }
         }
@@ -142,8 +140,8 @@
             clicked = [clicked[clicked.length - 1]];
             console.log(clicked);
         }
-        // 정답이 6번되면 게임오버
-        if ( count === boxAll.length/2 ) {
+
+        if ( boxAll.classList.contains('correct') ) {
           console.log('gameover');
         }
 
@@ -164,17 +162,7 @@
     });
 
     btnReset.addEventListener('click', function () {
-      for (let i = 0; i < boxAll.length; i++) {
-            const cell = boxAll[i];
-            // const c = randomAlpha();
-            const c = arr[i];
 
-            const span = cell.querySelector('span');
-            cell.classList.remove('correct');
-            cell.removeChild(span);
-          }
-          console.log('reset')
-          count = 0;
     });
 
 
