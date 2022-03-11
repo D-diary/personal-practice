@@ -58,6 +58,29 @@
             font-weight: bold;
             margin: 0px 10px;
         }
+
+        .modal {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(11, 46, 19, 0.8);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal > .container {
+            width: 30vw;
+            height: 300px;
+            background-color: whitesmoke;
+            border-radius: 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -81,6 +104,15 @@
     <button class="btn-reset">game reset</button>
 </div>
 
+<div class="modal">
+    <div class="container">
+        <div class="title">MODAL</div>
+        <div class="content">
+            <button type="button">모달 닫기</button>
+        </div>
+    </div>
+</div>
+
 <script>
     const boxAll = document.querySelectorAll('.box');
     const boxWrap = document.querySelector('.box-wrap');
@@ -90,6 +122,16 @@
 
     function random(end) {
         return Math.floor(Math.random() * end);
+    }
+
+    function correctAll() {
+        for (let i = 0; i < boxAll.length; i++) {
+            if (!boxAll[i].classList.contains('correct')) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     const arr = "ABCDEFABCDEF".split('');
@@ -127,18 +169,30 @@
                 clicked[0].classList.add('correct');
                 clicked[1].classList.add('correct');
                 console.log('yes');
-                clicked = [];
+
+            } else {
+                setTimeout(function () {
+                    span1.classList.add('hidden');
+                    span2.classList.add('hidden');
+                }, 500);
             }
+
+            clicked = [];
         }
 
-        if (clicked.length === 3) {
-            const span1 = clicked[0].querySelector('span');
-            const span2 = clicked[1].querySelector('span');
-            span1.classList.add('hidden');
-            span2.classList.add('hidden');
-            clicked = [clicked[clicked.length - 1]];
-            console.log(clicked);
+        // if (clicked.length === 3) {
+        //     const span1 = clicked[0].querySelector('span');
+        //     const span2 = clicked[1].querySelector('span');
+        //     span1.classList.add('hidden');
+        //     span2.classList.add('hidden');
+        //     clicked = [clicked[clicked.length - 1]];
+        //     console.log(clicked);
+        // }
+
+        if (correctAll) {
+            console.log('gameover')
         }
+
 
     });
 

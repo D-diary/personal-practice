@@ -103,6 +103,7 @@
     }
 
     let clicked = [];
+    let count = 0;
     boxWrap.addEventListener('click', function (event) {
         // 박스가 아니면 리턴
         if (!event.target.classList.contains('box')) {
@@ -126,7 +127,8 @@
             if (span1.textContent === span2.textContent) {
                 clicked[0].classList.add('correct');
                 clicked[1].classList.add('correct');
-                console.log('yes');
+                count++;
+                console.log(count);
                 clicked = [];
             }
         }
@@ -139,6 +141,10 @@
             clicked = [clicked[clicked.length - 1]];
             console.log(clicked);
         }
+        // 정답이 6번되면 게임오버
+        if ( count === boxAll.length/2 ) {
+          console.log('gameover');
+        }
 
     });
 
@@ -147,6 +153,10 @@
             const cell = boxAll[i];
             // const c = randomAlpha();
             const c = arr[i];
+            // const span2 = cell.querySelector('span');
+            // if ( span2.classList.contains('hidden') ) {
+            //   console.log('span2hidden');
+            // }
 
             const span = document.createElement('span');
             span.classList.add('hidden');
@@ -157,7 +167,18 @@
     });
 
     btnReset.addEventListener('click', function () {
+      for (let i = 0; i < boxAll.length; i++) {
+            const cell = boxAll[i];
+            // const c = randomAlpha();
+            const c = arr[i];
 
+            const span = cell.querySelector('span');
+            cell.classList.remove('correct');
+            cell.removeChild(span);
+          }
+          console.log('reset');
+          count = 0;
+          clicked = [];
     });
 
 

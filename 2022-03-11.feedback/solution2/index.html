@@ -91,14 +91,15 @@
     function random(end) {
         return Math.floor(Math.random() * end);
     }
-    function correctAll(){
-      let count = 0;
-      for ( let i = 0; i < boxAll.length; i++ ) {
-          if ( boxAll[i].classList.contains('correct') ) {
-            count++;
-          } 
+
+    function correctAll() {
+        for (let i = 0; i < boxAll.length; i++) {
+            if (!boxAll[i].classList.contains('correct')) {
+                return false;
+            }
         }
 
+        return true;
     }
 
     const arr = "ABCDEFABCDEF".split('');
@@ -150,7 +151,7 @@
         }
 
         if (correctAll) {
-          console.log('gameover')
+            console.log('gameover')
         }
 
 

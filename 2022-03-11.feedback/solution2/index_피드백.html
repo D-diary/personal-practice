@@ -92,6 +92,15 @@
         return Math.floor(Math.random() * end);
     }
 
+    function correctAll(){
+      let count = 0;
+      for ( let i = 0; i < boxAll.length; i++ ) {
+          if ( boxAll[i].classList.contains('correct') ) {
+            count++;
+          } 
+        }
+    }
+
     const arr = "ABCDEFABCDEF".split('');
 
     // const arr = "ABCDEF".repeat(2).split('');
@@ -106,6 +115,10 @@
     boxWrap.addEventListener('click', function (event) {
         // 박스가 아니면 리턴
         if (!event.target.classList.contains('box')) {
+            return;
+        }
+
+        if (event.target.classList.contains('correct')) {
             return;
         }
 
@@ -140,24 +153,42 @@
             console.log(clicked);
         }
 
+        if (correctAll()) {
+          console.log('gameover');
+        }
     });
 
     btnStart.addEventListener('click', function () {
         for (let i = 0; i < boxAll.length; i++) {
             const cell = boxAll[i];
+            cell.textContent = '';
             // const c = randomAlpha();
             const c = arr[i];
 
             const span = document.createElement('span');
             span.classList.add('hidden');
             span.textContent = c;
+            cell.classList.remove('correct');
             cell.appendChild(span);
             console.log(c);
         }
     });
 
     btnReset.addEventListener('click', function () {
+        for (let i = 0; i < boxAll.length; i++) {
+            const cell = boxAll[i];
+            cell.textContent = '';
+            // const c = randomAlpha();
+            const c = arr[i];
 
+            const span = document.createElement('span');
+            span.classList.add('hidden');
+            span.textContent = c;
+            cell.classList.remove('correct');
+            cell.appendChild(span);
+        }
+        console.log('reset');
+        clicked = [];
     });
 
 
