@@ -162,6 +162,20 @@
     }
 
     let clicked = [];
+
+    function gameover() {
+      console.log('gameover');
+      document.querySelector('.modal').classList.remove('hidden');
+
+      const endDate = new Date();
+      console.log(endDate.getTime(), startDate.getTime(), endDate.getTime() - startDate.getTime());
+      timer.textContent = Math.floor((endDate.getTime() - startDate.getTime()) / 1000) + '초';
+
+      document.querySelector('.modal .title').textContent = Math.floor((endDate.getTime() - startDate.getTime()) /
+        1000) + '초';
+      clearInterval(intervalId);
+    }
+
     boxWrap.addEventListener('click', function (event) {
       // 박스가 아니면 리턴
       if (!event.target.classList.contains('box')) {
@@ -206,28 +220,18 @@
       //     console.log(clicked);
       // }
       
+
+
       if (correctAll()) {
-        console.log('gameover');
-        document.querySelector('.modal').classList.remove('hidden');
-
-        const endDate = new Date();
-        console.log(endDate.getTime(), startDate.getTime(), endDate.getTime() - startDate.getTime());
-        timer.textContent = Math.floor((endDate.getTime() - startDate.getTime()) / 1000) + '초';
-
-        document.querySelector('.modal .title').textContent = Math.floor((endDate.getTime() - startDate.getTime()) /
-          1000) + '초';
-        clearInterval(intervalId);
-        clearInterval(intervalId2);
-        clearInterval(intervalId3);
+        gameover();
       }
     });
 
     let startDate;
     let intervalId;
-    let intervalId2;
-    let intervalId3;
     const timer = document.querySelector('.timer');
     const timer2 = document.querySelector('.timer2');
+
     btnStart.addEventListener('click', function () {
       for (let i = 0; i < boxAll.length; i++) {
         const cell = boxAll[i];
@@ -242,32 +246,20 @@
       }
 
       startDate = new Date();
-
+      let time = 20;
       intervalId = setInterval(function () {
         const currentDate = new Date();
         console.log(currentDate.getTime() - startDate.getTime());
-        timer.textContent = Math.floor((currentDate.getTime() - startDate.getTime()) / 1000) + '초';
-      }, 1000);
-      
-      let time = 20;
-      intevalId2 = setInterval(function () {
+        timer.textContent = '진행시간 ' + Math.floor((currentDate.getTime() - startDate.getTime()) / 1000) + '초';
+
         time--;
-        timer2.textContent = time  + '초';
-        console.log(time)
+        timer2.textContent = '제한시간 ' + time  + '초';
+        if ( time === 0 ) {
+          gameover();
+        }
       }, 1000);
+      console.log(time)
 
-      if (time < 0) {
-        clearInterval(intervalId2);
-      }
-
-      intervalid3 = setInterval(()=> {
-        modal.classList.remove('hidden');
-
-        clearInterval(intervalId);
-        clearInterval(intervalId2);
-        clearInterval(intervalId3);
-      }, 20000);
-      
 
     });
 
