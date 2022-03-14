@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box-wrap {
+      width: 800px;
+      height: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: rgba(74, 74, 171, 0.72);
+      border: solid white 4px;
+      box-sizing: border-box;
+      text-align: center;
+      font-size: 180px;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .correct {
+      background-color: rgba(199, 149, 201, 0.73);
+    }
+
+
+    .btn {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .btn>button {
+      height: 50px;
+      width: 120px;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0px 10px;
+    }
+
+    .modal {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(11, 46, 19, 0.8);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal>.container {
+      width: 30vw;
+      height: 300px;
+      background-color: whitesmoke;
+      border-radius: 50px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal.hidden {
+      display: none;
+    }
+
+    .timer {
+      font-size: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="timer"></div>
+
+  <div class="box-wrap">
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+    <div class="box box5"></div>
+    <div class="box box6"></div>
+    <div class="box box7"></div>
+    <div class="box box8"></div>
+    <div class="box box9"></div>
+    <div class="box box10"></div>
+    <div class="box box11"></div>
+    <div class="box box12"></div>
+  </div>
+
+  <div class="btn">
+    <button class="btn-start">game start</button>
+    <button class="btn-reset">game reset</button>
+  </div>
+
+  <div class="modal hidden">
+    <div class="container">
+      <div class="title">게임이 끝났습니다.</div>
+      <div class="content">
+        <button class="modal-btn" type="button">게임 다시 하기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const boxAll = document.querySelectorAll('.box');
+    const boxWrap = document.querySelector('.box-wrap');
+
+    const btnStart = document.querySelector('.btn-start');
+    const btnReset = document.querySelector('.btn-reset');
+
+    function random(end) {
+      return Math.floor(Math.random() * end);
+    }
+
+    function correctAll() {
+      for (let i = 0; i < boxAll.length; i++) {
+        if (!boxAll[i].classList.contains('correct')) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    const arr = "ABCDEFABCDEF".split('');
+
+    // const arr = "ABCDEF".repeat(2).split('');
+
+    function randomAlpha() {
+      const r = random(arr.length);
+      // splice 의 랜덤 인덱스 값의 1개를 빼주면 배열로 나옴 배열의 0번째를 택해서 문자열로 반환
+      return arr.splice(r, 1)[0];
+    }
+
+    let clicked = [];
+    boxWrap.addEventListener('click', function (event) {
+      // 박스가 아니면 리턴
+      if (!event.target.classList.contains('box')) {
+        return;
+      }
+
+      const box = event.target;
+      const span = box.querySelector('span');
+      // span.style.display = 'inline';
+      span.classList.remove('hidden');
+      console.log(box, span);
+
+      clicked.push(box);
+
+      if (clicked.length === 2) {
+        const span1 = clicked[0].querySelector('span');
+        const span2 = clicked[1].querySelector('span');
+
+        // 2개 맞추면 멈추기
+        // console.log(clicked[0].textContent, clicked[1].textContent);
+        if (span1.textContent === span2.textContent) {
+          clicked[0].classList.add('correct');
+          clicked[1].classList.add('correct');
+          console.log('yes');
+
+        } else {
+          setTimeout(function () {
+            span1.classList.add('hidden');
+            span2.classList.add('hidden');
+          }, 500);
+        }
+
+        clicked = [];
+      }
+
+      // if (clicked.length === 3) {
+      //     const span1 = clicked[0].querySelector('span');
+      //     const span2 = clicked[1].querySelector('span');
+      //     span1.classList.add('hidden');
+      //     span2.classList.add('hidden');
+      //     clicked = [clicked[clicked.length - 1]];
+      //     console.log(clicked);
+      // }
+
+      if (correctAll()) {
+        console.log('gameover');
+        document.querySelector('.modal').classList.remove('hidden');
+
+        const endDate = new Date();
+        console.log(endDate.getTime(), startDate.getTime(), endDate.getTime() - startDate.getTime());
+        timer.textContent = Math.floor((endDate.getTime() - startDate.getTime()) / 1000) + '초';
+
+        document.querySelector('.modal .title').textContent = Math.floor((endDate.getTime() - startDate.getTime()) /
+          1000) + '초';
+        clearInterval(intervalId);
+      }
+    });
+
+    let startDate;
+    let intervalId;
+    const timer = document.querySelector('.timer');
+    btnStart.addEventListener('click', function () {
+      for (let i = 0; i < boxAll.length; i++) {
+        const cell = boxAll[i];
+        // const c = randomAlpha();
+        const c = arr[i];
+
+        const span = document.createElement('span');
+        span.classList.add('hidden');
+        span.textContent = c;
+        cell.appendChild(span);
+        console.log(c);
+      }
+
+      startDate = new Date();
+
+      intervalId = setInterval(function () {
+        const currentDate = new Date();
+        console.log(currentDate.getTime() - startDate.getTime());
+        timer.textContent = Math.floor((currentDate.getTime() - startDate.getTime()) / 1000) + '초';
+      }, 1000);
+    });
+
+    btnReset.addEventListener('click', function () {
+      for (let i = 0; i < boxAll.length; i++) {
+        const cell = boxAll[i];
+        cell.textContent = '';
+        // const c = randomAlpha();
+        const c = arr[i];
+
+        const span = document.createElement('span');
+        span.classList.add('hidden');
+        span.textContent = c;
+        cell.classList.remove('correct');
+        cell.appendChild(span);
+      }
+      console.log('reset');
+      clicked = [];
+    });
+
+    const btnModal = document.querySelector('.modal-btn');
+    const modal = document.querySelector('.modal');
+
+    btnModal.addEventListener('click', function () {
+      // modal.style.display = 'none';
+      modal.classList.add('hidden');
+      for (let i = 0; i < boxAll.length; i++) {
+        const cell = boxAll[i];
+        cell.textContent = '';
+        // const c = randomAlpha();
+        const c = arr[i];
+
+        const span = document.createElement('span');
+        span.classList.add('hidden');
+        span.textContent = c;
+        cell.classList.remove('correct');
+        cell.appendChild(span);
+      }
+      console.log('reset');
+      clicked = [];
+      timer.textContent = '';
+    });
+  </script>
+</body>
+
+</html>
