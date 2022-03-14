@@ -24,6 +24,7 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      
     }
 
     .box {
@@ -93,13 +94,30 @@
     .timer2 {
       font-size: 50px;
     }
+    .btn.btn-size {
+      position: absolute;
+      top : 100px;
+    }
+    .timer-wrap {
+      display: flex;
+
+    }
+    .timer2 {
+      margin-left: 40px;
+    }
   </style>
 </head>
 
 <body>
+  <div class="btn btn-size">
+    <button class="small">4 X 3</button>
+    <button class="big">5 X 4</button>
+  </div>
 
-  <div class="timer"></div>
-  <div class="timer2"></div>
+<div class="timer-wrap">
+    <div class="timer"></div>
+    <div class="timer2"></div>
+</div>
 
   <div class="box-wrap">
     <div class="box box1"></div>
@@ -258,7 +276,6 @@
           gameover();
         }
       }, 1000);
-      console.log(time)
 
 
     });
@@ -278,6 +295,11 @@
       }
       console.log('reset');
       clicked = [];
+      timer.textContent = '';
+      timer2.textContent = '';
+      clearInterval(intervalId);
+      
+
     });
 
     const btnModal = document.querySelector('.modal-btn');
