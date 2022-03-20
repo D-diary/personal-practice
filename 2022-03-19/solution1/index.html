@@ -145,6 +145,7 @@
 
   const btnSmall = document.querySelector('.small');
   const btnBig = document.querySelector('.big');
+	let flag = false;
 
   function random(end) {
     return Math.floor(Math.random() * end);
@@ -172,6 +173,13 @@
     return arr.splice(r, 1)[0];
   }
 
+	function switcher() {
+		if (flag === false) {
+			flag = true;
+		}
+		return flag;
+	}
+
   let clicked = [];
 
   function gameover() {
@@ -192,6 +200,9 @@
     if (!event.target.classList.contains('box')) {
       return;
     }
+		if (flag === false) {
+			return;
+		}
 
     const box = event.target;
     const span = box.querySelector('span');
@@ -265,9 +276,11 @@
     clicked = [];
     timer.textContent = '';
     timer2.textContent = '';
+		flag = false;
 	}
 
   btnStart.addEventListener('click', function () {
+		flag = true;
     startDate = new Date();
     let time = 50;
     intervalId = setInterval(function () {
@@ -287,6 +300,7 @@
 		clear();
 
     clearInterval(intervalId);
+
   });
 
   const btnModal = document.querySelector('.modal-btn');
