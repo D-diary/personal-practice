@@ -78,9 +78,9 @@
     <button class="btnStart">시작</button>
   </div>
   <div class="container">
-    <div class="box">?</div>
+    <div class="box num1"></div>
     <div class="box">+</div>
-    <div class="box">?</div>
+    <div class="box num2"></div>
     <div class="box">=</div>
     <div class="box answer"></div>
   </div>
@@ -147,10 +147,35 @@
       }
       n.push(numbers[0].textContent)
       n.push(numbers[1].textContent)
-      console.log(n);
       let result = Number(n[0])+Number(n[1]);
-      console.log(result);
       answer.textContent = result;
+      console.log(answer.textContent);
+      console.log(typeof answer.textContent);
+
+    });
+    let clicked = []
+    numberWrap.addEventListener('click', function (event) {
+      if (!event.target.classList.contains('number')) {
+        return;
+      }
+      
+      const number = event.target;
+      clicked.push(number);
+      console.log(clicked);
+
+
+      document.querySelector('.num1').textContent = clicked[0].textContent;
+      document.querySelector('.num2').textContent = clicked[1].textContent;
+      // 166번줄만 에러가 뜸
+
+      if ( clicked.length === 2) {
+        console.log(Number(clicked[0].textContent) + Number(clicked[1].textContent));
+        console.log(answer.textContent);
+        console.log(typeof answer.textContent);
+        if ( (clicked[0].textContent) + (clicked[1].textContent) == Number(answer.textContent) ) {
+          console.log('yes');
+        }
+      }
 
     });
 
