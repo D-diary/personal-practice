@@ -2,323 +2,327 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-  <style>
-    body {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .box-wrap {
-      width: 800px;
-      height: 600px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+        .box-wrap {
+            width: 800px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
 
-    }
+        }
 
-    .box {
-      width: 200px;
-      height: 200px;
-      background-color: rgba(74, 74, 171, 0.72);
-      border: solid white 4px;
-      box-sizing: border-box;
-      text-align: center;
-      font-size: 180px;
-      color: white;
-    }
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(74, 74, 171, 0.72);
+            border: solid white 4px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 180px;
+            color: white;
+        }
 
-    .hidden {
-      display: none;
-    }
+        .hidden {
+            display: none;
+        }
 
-    .correct {
-      background-color: rgba(199, 149, 201, 0.73);
-    }
+        .correct {
+            background-color: rgba(199, 149, 201, 0.73);
+        }
 
 
-    .btn {
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-    }
+        .btn {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
 
-    .btn>button {
-      height: 50px;
-      width: 120px;
-      font-size: 16px;
-      font-weight: bold;
-      margin: 0px 10px;
-    }
+        .btn > button {
+            height: 50px;
+            width: 120px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0px 10px;
+        }
 
-    .modal {
-      position: fixed;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(11, 46, 19, 0.8);
+        .modal {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(11, 46, 19, 0.8);
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .modal>.container {
-      width: 30vw;
-      height: 300px;
-      background-color: whitesmoke;
-      border-radius: 50px;
+        .modal > .container {
+            width: 30vw;
+            height: 300px;
+            background-color: whitesmoke;
+            border-radius: 50px;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .modal.hidden {
-      display: none;
-    }
+        .modal.hidden {
+            display: none;
+        }
 
-    .timer {
-      font-size: 50px;
-    }
-    .timer2 {
-      font-size: 50px;
-    }
-    .btn.btn-size {
-      position: absolute;
-      top : 100px;
-    }
-    .timer-wrap {
-      display: flex;
+        .timer {
+            font-size: 50px;
+        }
 
-    }
-    .timer2 {
-      margin-left: 40px;
-    }
-  </style>
+        .timer2 {
+            font-size: 50px;
+        }
+
+        .btn.btn-size {
+            position: absolute;
+            top: 100px;
+        }
+
+        .timer-wrap {
+            display: flex;
+
+        }
+
+        .timer2 {
+            margin-left: 40px;
+        }
+    </style>
 </head>
 
 <body>
 <div class="btn btn-size">
-  <button class="small">4 X 3</button>
-  <button class="big">5 X 4</button>
+    <button class="small">4 X 3</button>
+    <button class="big">5 X 4</button>
 </div>
 
 <div class="timer-wrap">
-  <div class="timer"></div>
-  <div class="timer2"></div>
+    <div class="timer"></div>
+    <div class="timer2"></div>
 </div>
 
 <div class="box-wrap">
 </div>
 
 <div class="btn">
-  <button class="btn-start">game start</button>
-  <button class="btn-reset">game reset</button>
+    <button class="btn-start">game start</button>
+    <button class="btn-reset">game reset</button>
 </div>
 
 <div class="modal hidden">
-  <div class="container">
-    <div class="title">게임이 끝났습니다.</div>
-    <div class="content">
-      <button class="modal-btn" type="button">게임 다시 하기</button>
+    <div class="container">
+        <div class="title">게임이 끝났습니다.</div>
+        <div class="content">
+            <button class="modal-btn" type="button">게임 다시 하기</button>
+        </div>
     </div>
-  </div>
 </div>
 
 <script>
 
-  const boxWrap = document.querySelector('.box-wrap');
+    const boxWrap = document.querySelector('.box-wrap');
 
-  const btnStart = document.querySelector('.btn-start');
-  const btnReset = document.querySelector('.btn-reset');
+    const btnStart = document.querySelector('.btn-start');
+    const btnReset = document.querySelector('.btn-reset');
 
-  const btnSmall = document.querySelector('.small');
-  const btnBig = document.querySelector('.big');
-	let flag = false;
+    const btnSmall = document.querySelector('.small');
+    const btnBig = document.querySelector('.big');
+    let flag = false;
 
-  function random(end) {
-    return Math.floor(Math.random() * end);
-  }
-
-  function correctAll() {
-    const boxAll = document.querySelectorAll('.box');
-    console.log('boxAll ====== ', boxAll);
-
-    for (let i = 0; i < boxAll.length; i++) {
-      if (!boxAll[i].classList.contains('correct')) {
-        return false;
-      }
+    function random(end) {
+        return Math.floor(Math.random() * end);
     }
 
-    return true;
-  }
+    function correctAll() {
+        const boxAll = document.querySelectorAll('.box');
+        console.log('boxAll ====== ', boxAll);
 
-	let arr = "ABCDEFABCDEF".split('');
+        for (let i = 0; i < boxAll.length; i++) {
+            if (!boxAll[i].classList.contains('correct')) {
+                return false;
+            }
+        }
 
-  function randomAlpha(s) {
-		// let arr = s.split('');
-    const r = random(arr.length);
-    // splice 의 랜덤 인덱스 값의 1개를 빼주면 배열로 나옴 배열의 0번째를 택해서 문자열로 반환
-    return arr.splice(r, 1)[0];
-  }
+        return true;
+    }
 
-	function switcher() {
-		if (flag === false) {
-			flag = true;
-		}
-		return flag;
-	}
+    let arr = "ABCDEFABCDEF".split('');
 
-  let clicked = [];
+    function randomAlpha(s) {
+        // let arr = s.split('');
+        const r = random(arr.length);
+        // splice 의 랜덤 인덱스 값의 1개를 빼주면 배열로 나옴 배열의 0번째를 택해서 문자열로 반환
+        return arr.splice(r, 1)[0];
+    }
 
-  function gameover() {
-    console.log('gameover');
-    document.querySelector('.modal').classList.remove('hidden');
+    function switcher() {
+        if (flag === false) {
+            flag = true;
+        }
+        return flag;
+    }
 
-    const endDate = new Date();
-    console.log(endDate.getTime(), startDate.getTime(), endDate.getTime() - startDate.getTime());
-    timer.textContent = Math.floor((endDate.getTime() - startDate.getTime()) / 1000) + '초';
+    let clicked = [];
 
-    document.querySelector('.modal .title').textContent = Math.floor((endDate.getTime() - startDate.getTime()) /
+    function gameover() {
+        console.log('gameover');
+        document.querySelector('.modal').classList.remove('hidden');
+
+        const endDate = new Date();
+        console.log(endDate.getTime(), startDate.getTime(), endDate.getTime() - startDate.getTime());
+        timer.textContent = Math.floor((endDate.getTime() - startDate.getTime()) / 1000) + '초';
+
+        document.querySelector('.modal .title').textContent = Math.floor((endDate.getTime() - startDate.getTime()) /
             1000) + '초';
-    clearInterval(intervalId);
-  }
-
-  boxWrap.addEventListener('click', function (event) {
-    // 박스가 아니면 리턴
-    if (!event.target.classList.contains('box')) {
-      return;
-    }
-		if (flag === false) {
-			return;
-		}
-
-    const box = event.target;
-    const span = box.querySelector('span');
-    span.classList.remove('hidden');
-    console.log(box, span);
-
-    clicked.push(box);
-
-    if (clicked.length === 2) {
-      const span1 = clicked[0].querySelector('span');
-      const span2 = clicked[1].querySelector('span');
-
-      // 2개 맞추면 멈추기
-      if (span1.textContent === span2.textContent) {
-        clicked[0].classList.add('correct');
-        clicked[1].classList.add('correct');
-        console.log('yes');
-
-      } else {
-        setTimeout(function () {
-          span1.classList.add('hidden');
-          span2.classList.add('hidden');
-        }, 500);
-      }
-
-      clicked = [];
+        clearInterval(intervalId);
     }
 
-    if (correctAll()) {
-      gameover();
+    boxWrap.addEventListener('click', function (event) {
+        // 박스가 아니면 리턴
+        if (!event.target.classList.contains('box')) {
+            return;
+        }
+        if (flag === false) {
+            return;
+        }
+
+        const box = event.target;
+        const span = box.querySelector('span');
+        span.classList.remove('hidden');
+        console.log(box, span);
+
+        clicked.push(box);
+
+        if (clicked.length === 2) {
+            const span1 = clicked[0].querySelector('span');
+            const span2 = clicked[1].querySelector('span');
+
+            // 2개 맞추면 멈추기
+            if (span1.textContent === span2.textContent) {
+                clicked[0].classList.add('correct');
+                clicked[1].classList.add('correct');
+                console.log('yes');
+
+            } else {
+                setTimeout(function () {
+                    span1.classList.add('hidden');
+                    span2.classList.add('hidden');
+                }, 500);
+            }
+
+            clicked = [];
+        }
+
+        if (correctAll()) {
+            gameover();
+        }
+    });
+
+    let startDate;
+    let intervalId;
+    const timer = document.querySelector('.timer');
+    const timer2 = document.querySelector('.timer2');
+
+    function makeBox(s) {
+        boxWrap.textContent = '';
+        arr = s.split('');
+        if (s.length === 12) {
+            boxWrap.style.width = '800px';
+            boxWrap.style.height = '600px';
+        }
+        if (s.length === 20) {
+            boxWrap.style.width = '1000px';
+            boxWrap.style.height = '800px';
+        }
+
+        for (let i = 0; i < s.length; i++) {
+            const c = randomAlpha(s);
+            // const c = arr[i];
+
+            const span = document.createElement('span');
+            span.classList.add('hidden');
+            span.textContent = c;
+
+            const box = document.createElement('div');
+            box.classList.add('box');
+            box.classList.add(`box${i + 1}`);
+            box.appendChild(span);
+
+            boxWrap.appendChild(box);
+        }
     }
-  });
 
-  let startDate;
-  let intervalId;
-  const timer = document.querySelector('.timer');
-  const timer2 = document.querySelector('.timer2');
-
-  function makeBox(s) {
-    boxWrap.textContent = '';
-    arr = s.split('');
-		if ( s.length === 12 ) {
-			boxWrap.style.width = '800px';
-    	boxWrap.style.height = '600px';
-		} 
-		if ( s.length === 20 ) {
-			boxWrap.style.width = '1000px';
-    	boxWrap.style.height = '800px';
-		}
-
-    for (let i = 0; i < s.length; i++) {
-      const c = randomAlpha(s);
-      // const c = arr[i];
-
-      const span = document.createElement('span');
-      span.classList.add('hidden');
-      span.textContent = c;
-
-      const box = document.createElement('div');
-      box.classList.add('box');
-      box.classList.add(`box${i + 1}`);
-      box.appendChild(span);
-
-      boxWrap.appendChild(box);
+    function clear() {
+        boxWrap.textContent = '';
+        console.log('reset');
+        clicked = [];
+        timer.textContent = '';
+        timer2.textContent = '';
+        flag = false;
     }
-  }
 
-	function clear() {
-		boxWrap.textContent = '';
-    console.log('reset');
-    clicked = [];
-    timer.textContent = '';
-    timer2.textContent = '';
-		flag = false;
-	}
+    btnStart.addEventListener('click', function () {
+        flag = true;
+        startDate = new Date();
+        let time = 50;
+        intervalId = setInterval(function () {
+            const currentDate = new Date();
+            console.log(currentDate.getTime() - startDate.getTime());
+            timer.textContent = '경과시간 ' + Math.floor((currentDate.getTime() - startDate.getTime()) / 1000) + '초';
 
-  btnStart.addEventListener('click', function () {
-		flag = true;
-    startDate = new Date();
-    let time = 50;
-    intervalId = setInterval(function () {
-      const currentDate = new Date();
-      console.log(currentDate.getTime() - startDate.getTime());
-      timer.textContent = '경과시간 ' + Math.floor((currentDate.getTime() - startDate.getTime()) / 1000) + '초';
+            time--;
+            timer2.textContent = '남은시간 ' + time + '초';
+            if (time === 0) {
+                gameover();
+            }
+        }, 1000);
+    });
 
-      time--;
-      timer2.textContent = '남은시간 ' + time  + '초';
-      if ( time === 0 ) {
-        gameover();
-      }
-    }, 1000);
-  });
+    btnReset.addEventListener('click', function () {
+        clear();
 
-  btnReset.addEventListener('click', function () {
-		clear();
+        clearInterval(intervalId);
 
-    clearInterval(intervalId);
+    });
 
-  });
+    const btnModal = document.querySelector('.modal-btn');
+    const modal = document.querySelector('.modal');
 
-  const btnModal = document.querySelector('.modal-btn');
-  const modal = document.querySelector('.modal');
+    btnModal.addEventListener('click', function () {
+        modal.classList.add('hidden');
 
-  btnModal.addEventListener('click', function () {
-    modal.classList.add('hidden');
+        clear();
+    });
 
-		clear();
-  });
+    btnSmall.addEventListener('click', function () {
+        makeBox('ABCDEFABCDEF');
+    });
 
-  btnSmall.addEventListener('click', function () {
-    makeBox('ABCDEFABCDEF');
-  });
-
-  btnBig.addEventListener('click', function () {
-    makeBox('ABCDEFGHIJABCDEFGHIJ');
-  });
+    btnBig.addEventListener('click', function () {
+        makeBox('ABCDEFGHIJABCDEFGHIJ');
+    });
 
 </script>
 </body>
