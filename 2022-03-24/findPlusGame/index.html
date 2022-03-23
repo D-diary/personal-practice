@@ -163,15 +163,15 @@
       
       const number = event.target;
       clicked.push(number);
-      console.log(clicked);
-
+      console.log('clicked',clicked);
 
       num1.textContent = clicked[0].textContent;
       num2.textContent = clicked[1].textContent;
-      // 위 줄만 에러가 뜸
+      console.log('clicked0',num1.textContent);
+      console.log('clicked1',num2.textContent);
 
       if ( clicked.length === 2) {
-        console.log(Number(clicked[0].textContent) + Number(clicked[1].textContent));
+        console.log(Number(num1.textContent) + Number(num2.textContent));
         console.log(answer.textContent);
         console.log(typeof answer.textContent);
         if ( (clicked[0].textContent) + (clicked[1].textContent) === Number(answer.textContent) ) {
